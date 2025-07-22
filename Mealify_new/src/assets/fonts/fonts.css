@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'JapaneseStyle';
+  src: url('./Japanese_font.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
