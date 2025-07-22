@@ -1,4 +1,3 @@
-import { Star } from "lucide-react";
 import { CountUp } from "./ui/count-up";
 
 const About: React.FC = () => {

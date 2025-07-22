@@ -1,26 +1,12 @@
-import React, { useState } from 'react';
 import Hero from './components/Hero';
-import Menu from './components/Menu';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Cart from './components/Cart';
 import useLenis from './hooks/useLenis';
-import type { MenuItem, CartItem } from './types';
-import { Home, ShoppingCart, Info, Phone, ShoppingBag, HelpCircle, User, Briefcase, Mail } from "lucide-react";
 import MorphingNavigation from './components/ui/morphing-navigation';
-import { useNavigate } from 'react-router-dom';
 import AutomatedCarousel from './components/ui/3d-carousel';
 import DotGrid from './components/ui/dot_bg';
 import './assets/fonts/fonts.css'
-
-
-const links = [
-  { id: 'home', label: 'Home', href: '#', icon: <Home /> },
-  { id: 'shop', label: 'Shop', href: '#', icon: <ShoppingCart /> },
-  { id: 'about', label: 'About', href: '#', icon: <Info /> },
-  { id: 'contact', label: 'Contact', href: '#', icon: <Phone /> }
-];
 
 
 const App: React.FC = () => {

@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../../lib/utils";
-import { ChefHat } from "lucide-react";
 
 export interface MorphingNavigationLink {
   id: string;
@@ -213,7 +212,7 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
             "hidden sm:flex items-center justify-center",
             isSticky ? "opacity-0" : "opacity-100"
           )}>
-            {links.map((link, i) => (
+            {links.map((link) => (
               <motion.a
                 key={link.id}
                 href={link.href}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import type { JSX } from 'react/jsx-runtime';
@@ -172,7 +172,7 @@ const AutomatedCarousel: React.FC = () => {
     };
 
     // Mobile card component without animations
-    const MobileCard = ({ slideData, index }: { slideData: SlideData, index: number }): JSX.Element => {
+    const MobileCard = ({ slideData}: { slideData: SlideData, index: number }): JSX.Element => {
         return (
             <div className="w-full mb-6 last:mb-0">
                 <div className={`h-80 bg-gradient-to-br ${slideData.bgGradient} relative rounded-2xl overflow-hidden`}>

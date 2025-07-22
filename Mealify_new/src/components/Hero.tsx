@@ -1,4 +1,4 @@
-import { ChefHat, Utensils } from 'lucide-react';
+import { Utensils } from 'lucide-react';
 import { useRef, useLayoutEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import '../assets/fonts/fonts.css';
@@ -78,7 +78,7 @@ const Hero = () => {
 
                 <div className="flex flex-col md:flex-row items-center justify-center mt-24 mb-8 gap-10">
                     {/* Left: Rotating Text Block */}
-                    <div className="w-full md:w-1/2 flex flex-col items-start justify-center text-left">
+                    <div className="w-full md:w-1/2 flex flex-col items-center justify-center text-left">
                         <div className="flex flex-wrap h-[80px] mb-10 items-center gap-3">
                             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200">Delivering</h2>
                             <motion.div layout animate={{ width }} className="overflow-hidden">
