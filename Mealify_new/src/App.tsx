@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
   return (
     <div data-lenis-scroll>
-      <div className="fixed top-0 left-0 w-full h-full -z-10">
+      <div className="fixed top-0 left-0 w-full h-full z-1">
         <DotGrid
           dotSize={5}
           gap={15}
@@ -36,8 +36,8 @@ const App: React.FC = () => {
         />
       </div>
 
-      <main className="relative z-10 space-y-16">
-                <MorphingNavigation
+      <main className="relative z-10 space-y-12">
+        <MorphingNavigation
           links={links}
           theme="glass"
           scrollThreshold={100}

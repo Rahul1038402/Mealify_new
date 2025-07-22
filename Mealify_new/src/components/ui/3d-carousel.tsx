@@ -35,14 +35,14 @@ const AutomatedCarousel: React.FC = () => {
             subtitle: "Get food at your door",
             description: "Enjoy restaurant‑quality dishes delivered straight to your door in record time. Choose from thousands of options and track your order live until it arrives piping hot.",
             tags: ["Food Delivery"],
-            bgGradient: "from-gray-900 to-gray-950",
+            bgGradient: "from-[#475569cc] to-[#1e293bcc]",
         },
         {
             title: "Fresh & Hot",
             subtitle: "Get your meal delivered hot & fresh",
             description: "Every order arrives piping hot and made from the freshest ingredients. We partner with local vendors to ensure farm‑to‑table flavor in every bite.",
             tags: ["Freshly Prepared"],
-            bgGradient: "from-gray-900 to-gray-950"
+            bgGradient: "from-[#475569cc] to-[#1e293bcc]"
         },
 
         {
@@ -50,16 +50,16 @@ const AutomatedCarousel: React.FC = () => {
             subtitle: "30% off on first order with code MEALIFY30",
             description: "Discover and reorder your go‑to meals with just a tap. Save your favorite dishes and enjoy personalized recommendations every time you crave something delicious.",
             tags: ["Discounts", "Daily Offers"],
-            bgGradient: "from-gray-900 to-gray-950",
+            bgGradient: "from-[#475569cc] to-[#1e293bcc]",
             featured: true
         },
-        
+
         {
             title: "Fast Service",
             subtitle: "30 Minutes delivery guaranteed",
             description: "Lightning‑quick order processing and delivery so you never wait hungry. Our seamless app experience ensures you’re just a tap away from your next meal.",
             tags: ["Food Delivery", "Tagline"],
-            bgGradient: "from-gray-900 to-gray-950",
+            bgGradient: "from-[#475569cc] to-[#1e293bcc]",
             featured: true
         },
     ]
@@ -172,7 +172,7 @@ const AutomatedCarousel: React.FC = () => {
     };
 
     // Mobile card component without animations
-    const MobileCard = ({ slideData}: { slideData: SlideData, index: number }): JSX.Element => {
+    const MobileCard = ({ slideData }: { slideData: SlideData, index: number }): JSX.Element => {
         return (
             <div className="w-full mb-6 last:mb-0">
                 <div className={`h-80 bg-gradient-to-br ${slideData.bgGradient} relative rounded-2xl overflow-hidden`}>
@@ -195,21 +195,21 @@ const AutomatedCarousel: React.FC = () => {
                         )}
 
                         <div className={`max-w-full ${slideData.featured ? 'pt-4' : ''}`}>
-                            <h1 className="font-bold text-white text-2xl sm:text-3xl mb-2">
+                            <h1 className="font-bold text-purple-600 text-2xl sm:text-3xl mb-2">
                                 {slideData.title}
                             </h1>
 
                             <div className="w-12 h-1 bg-white/30 mb-3"></div>
 
-                            <h2 className="text-white/80 mb-3 text-base">
+                            <h2 className="text-indigo-500 mb-3 font-semibold tracking-wide">
                                 {slideData.subtitle}
                             </h2>
 
-                            <p className="text-white/90 text-sm mb-4 leading-relaxed">
+                            <p className="text-white/90 text-sm mb-4 tracking-wider">
                                 {slideData.description}
                             </p>
 
-                            {/* Tags */}
+                            {/* Tags
                             <div className="flex flex-wrap gap-2">
                                 {slideData.tags.map((tag: string, tagIndex: number) => (
                                     <span
@@ -219,7 +219,7 @@ const AutomatedCarousel: React.FC = () => {
                                         {tag}
                                     </span>
                                 ))}
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                 </div>
@@ -282,9 +282,9 @@ const AutomatedCarousel: React.FC = () => {
                             animate={isCenter ? "visible" : { opacity: 1, y: 0 }}
                         >
                             <motion.h1
-                                className={`font-bold text-[#3402fec4] mb-2 ${isCenter
-                                        ? 'text-xl sm:text-2xl lg:text-3xl xl:text-4xl'
-                                        : 'text-lg sm:text-xl lg:text-2xl'
+                                className={`font-bold text-purple-600 mb-2 ${isCenter
+                                    ? 'text-2xl sm:text-2xl lg:text-3xl xl:text-4xl'
+                                    : 'text-lg sm:text-xl lg:text-2xl'
                                     }`}
                                 variants={isCenter ? itemVariants : {}}
                                 initial={isCenter ? undefined : { opacity: 1, y: 0 }}
@@ -302,7 +302,7 @@ const AutomatedCarousel: React.FC = () => {
                             ></motion.div>
 
                             <motion.h2
-                                className={`text-gray-200 mb-3 ${isCenter ? 'text-sm sm:text-base lg:text-lg' : 'text-xs sm:text-sm'
+                                className={`text-indigo-600 mb-6 font-semibold ${isCenter ? 'text-sm sm:text-base lg:text-lg' : 'text-xs sm:text-sm'
                                     }`}
                                 variants={isCenter ? itemVariants : {}}
                                 initial={isCenter ? undefined : { opacity: 1, y: 0 }}
@@ -364,7 +364,7 @@ const AutomatedCarousel: React.FC = () => {
     return (
         <div className="relative w-full max-w-7xl mx-auto">
             {/* Main Carousel Container */}
-            <div className="relative flex items-center justify-center gap-2 sm:gap-4 lg:gap-6 px-4 min-h-96">
+            <div className="relative flex items-center justify-center gap-2 sm:gap-4 lg:gap-6 min-h-96">
                 {/* Left Slide */}
                 <div className="flex-1 max-w-xs lg:max-w-sm">
                     <AnimatePresence mode="wait" custom={direction}>

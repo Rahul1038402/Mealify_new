@@ -10,6 +10,7 @@ import img3 from '../assets/marquee_images/img3.jpg';
 import img4 from '../assets/marquee_images/img4.jpg';
 import img5 from '../assets/marquee_images/img5.jpg';
 import img6 from '../assets/marquee_images/img6.jpg';
+import img7 from '../assets/marquee_images/img7.jpg';
 
 const Hero = () => {
     const rotatingRef = useRef<HTMLSpanElement>(null);
@@ -45,18 +46,22 @@ const Hero = () => {
         {
             src: img6,
             alt: "Mealify Food Image 6"
+        },
+        {
+            src: img7,
+            alt: "Mealify Food Image 7"
         }
     ];
 
     return (
-        <section className="mt-48 relative w-full flex items-center justify-center px-6">
+        <section className="mt-28 relative h-screen w-full flex items-center justify-center px-6">
             <div className="max-w-5xl w-full text-center">
                 {/* Logo + Brand Name */}
-                <div className="flex flex-col items-center mb-10">
+                <div className="flex flex-col items-center">
                     {/* Icon and Text */}
                     <div className="flex items-center">
                         <div className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 mr-2 flex items-center justify-center rounded-full bg-gradient-to-r from-[#5b32ffc9] to-[#5833ffcb]">
-                            <Utensils className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-white" />
+                            <Utensils className="h-8 w-8 sm:h-12 sm:w-12 md:h-12 md:w-12 text-white" />
                         </div>
 
                         <div className="flex flex-col items-start">
@@ -76,7 +81,7 @@ const Hero = () => {
 
 
 
-                <div className="flex flex-col md:flex-row items-center justify-center mt-24 mb-8 gap-10">
+                <div className="flex flex-col md:flex-row items-center justify-center mb-8 gap-10">
                     {/* Left: Rotating Text Block */}
                     <div className="w-full md:w-1/2 flex flex-col items-center justify-center text-left">
                         <div className="flex flex-wrap h-[80px] mb-10 items-center gap-3">
@@ -85,10 +90,10 @@ const Hero = () => {
                                 <span ref={rotatingRef}>
                                     <RotatingText
                                         texts={[
-                                            "Fresh & Hot",
-                                            "Fast Service",
+                                            "Fresh & Hot Food",
+                                            "Your Favorites",
                                             "Quick Orders",
-                                            "Doorstep Delights"
+                                            "At Your Doorstep"
                                         ]}
                                         mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-[#5b32ffc9] to-[#5833ffcb] text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg font-semibold text-lg sm:text-xl"
                                         staggerFrom="last"
@@ -105,7 +110,7 @@ const Hero = () => {
 
                         </div>
                         <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto">
-                            Explore a wide range of dishes from top-rated restaurants. Get your meal delivered hot & fresh — straight to your doorstep.
+                            Explore a wide range of dishes from top-rated restaurants. Get your meal delivered hot & fresh straight to your doorstep.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button className="bg-[#5833ffc7] hover:bg-[#5b32ffe5] text-white text-lg font-semibold px-6 py-3 rounded-full transition-colors duration-400">

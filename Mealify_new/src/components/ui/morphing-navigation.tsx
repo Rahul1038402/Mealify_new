@@ -52,6 +52,14 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const getThemeStyles = useCallback(() => {
     switch (theme) {
       case "dark":
@@ -88,20 +96,10 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
     if (disableAutoMorph) return;
     const handleScroll = () => {
       setIsMenuOpen(false);
-      // Only update sticky state for screens larger than sm breakpoint
-      const isMobile = window.innerWidth < 640;
-      setIsSticky(isMobile ? true : window.scrollY >= scrollThreshold);
+      setIsSticky(window.scrollY >= scrollThreshold);
     };
-    
-    // Initial check
-    handleScroll();
-    
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [scrollThreshold, disableAutoMorph]);
 
   const handleMenuToggle = () => {
@@ -142,7 +140,7 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
       <AnimatePresence>
         {enablePageBlur && isMenuOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+            className="fixed inset-0 bg-black/10 backdrop-blur-sm z-40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -161,119 +159,63 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
         <motion.nav
           ref={navRef}
           className={cn(
-            "mx-auto backdrop-blur-md border fixed left-1/2 -translate-x-1/2",
-            "flex items-center justify-center",
-            isMenuOpen ? "!flex-col" : "",
+            "flex justify-center items-center mx-auto backdrop-blur-md border fixed left-0 right-0",
             themeStyles.nav,
             themeStyles.text
           )}
-          animate={{
-            height: isMenuOpen ? "auto" : 90,
-            width: isMenuOpen ? "95%" : (isSticky ? 90 : "calc(100% - 2rem)"),
-            maxWidth: isMenuOpen ? "95%" : (!isSticky && window.innerWidth >= 640 ? "500px" : "90px"),
-            borderRadius: isMenuOpen ? 20 : 9999,
-            paddingTop: isMenuOpen ? 20 : 0,
-            paddingBottom: isMenuOpen ? 20 : 0
-          }}
+          animate={
+            isMobile
+              ? {
+                height: isSticky ? 90 : 75,
+                width: isSticky ? 90 : 350,
+                borderRadius: 9999,
+              }
+              : {
+                height: isSticky ? 90 : 100,
+                width: isSticky ? 90 : 500,
+                borderRadius: 9999,
+              }
+          }
           transition={{ duration: animationDuration }}
           style={{ top: 0, ...customStyles }}
         >
-          {/* Mobile Menu Button */}
-          <motion.button
-            onClick={handleMenuToggle}
-            className={cn(
-              "sm:hidden absolute right-4 w-[45px] h-[45px] rounded-full outline-none border text-gray-200 cursor-pointer flex items-center justify-center",
-              themeStyles.button
-            )}
-            initial={false}
-            animate={{ 
-              scale: 1,
-              opacity: 1,
-              top: isMenuOpen ? 10 : "50%",
-              y: isMenuOpen ? 0 : "-50%"
-            }}
-          >
-            {customHamburgerIcon || (
-              <div className="flex flex-col items-center justify-center gap-[6px] w-full">
-                <span className={cn(
-                  "block w-5 h-[2px] bg-current transition-transform duration-300",
-                  isMenuOpen ? "rotate-45 translate-y-[4px]" : ""
-                )}></span>
-                <span className={cn(
-                  "block w-5 h-[2px] bg-current transition-transform duration-300",
-                  isMenuOpen ? "-rotate-45 -translate-y-[4px]" : ""
-                )}></span>
-              </div>
-            )}
-          </motion.button>
-
-          {/* Desktop Links */}
-          <div className={cn(
-            "hidden sm:flex items-center justify-center",
-            isSticky ? "opacity-0" : "opacity-100"
-          )}>
-            {links.map((link) => (
-              <motion.a
-                key={link.id}
-                href={link.href}
-                onClick={(e) => handleLinkClick(link, e)}
-                className="px-5 py-2.5 text-lg font-bold text-gray-200 tracking-wide"
-              >
-                {link.icon && <span className="mr-2 inline-block">{link.icon}</span>}
-                {link.label}
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Mobile Links */}
           <AnimatePresence>
-            {isMenuOpen && (
-              <motion.div
-                className="sm:hidden flex flex-col items-center w-full gap-4 mt-12"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {links.map((link, i) => (
-                  <motion.a
-                    key={link.id}
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(link, e)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="px-5 py-2.5 text-lg font-bold text-gray-200 tracking-wide"
-                  >
-                    {link.icon && <span className="mr-2 inline-block">{link.icon}</span>}
-                    {link.label}
-                  </motion.a>
-                ))}
-              </motion.div>
-            )}
+            {!isSticky &&
+              links.map((link, i) => (
+                <motion.a
+                  key={link.id}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(link, e)}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className={cn("px-2 sm:px-5 py-2.5 text-lg rounded-full hover:text-indigo-500 text-gray-200 font-semibold sm:tracking-wider transition-colors duration-300")}
+                >
+                  {link.icon && <span className="mr-2 inline-block">{link.icon}</span>}
+                  {link.label}
+                </motion.a>
+              ))}
           </AnimatePresence>
 
-          {/* Sticky Menu Button (Desktop) */}
           <motion.button
             onClick={handleMenuToggle}
             className={cn(
-              "hidden sm:flex absolute inset-0 m-auto w-[60px] h-[60px] rounded-full outline-none border text-gray-200 cursor-pointer items-center justify-center",
+              "absolute w-[60px] h-[60px] rounded-full outline-none border cursor-pointer",
               themeStyles.button
             )}
             animate={{ scale: isSticky ? 1 : 0 }}
             transition={{ delay: isSticky ? 0.2 : 0 }}
           >
             {customHamburgerIcon || (
-              <div className="flex flex-col items-center justify-center gap-[6px] w-full">
-                <span className="block w-5 h-[2px] bg-current transition-transform duration-300"></span>
-                <span className="block w-5 h-[2px] bg-current transition-transform duration-300"></span>
+              <div className="flex flex-col text-gray-200 hover:text-indigo-500 items-center justify-center h-full transition-colors duration-300">
+                <span className="block w-4 h-0.5 bg-current my-1"></span>
+                <span className="block w-4 h-0.5 bg-current my-1"></span>
               </div>
             )}
           </motion.button>
         </motion.nav>
       </motion.header>
-
     </>
   );
 };
