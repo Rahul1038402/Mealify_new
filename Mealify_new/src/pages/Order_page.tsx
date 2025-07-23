@@ -66,7 +66,7 @@ const OrderPage: React.FC = () => {
                 <Menu addToCart={handleAddToCart} cart={cart} />
 
                 {/* Toggle Cart Button */}
-                <div className="fixed bottom-0 right-6 z-50">
+                <div className="fixed bottom-6 right-6 z-[40]">
                     <button
                         onClick={() => setIsCartOpen(true)}
                         className="bg-gradient-to-r from-[#5b32ffc9] to-[#5833ffcb] text-white p-4 rounded-full shadow-lg hover:scale-105 transition-all duration-300 ease-out hover:shadow-xl active:scale-95"
@@ -83,68 +83,69 @@ const OrderPage: React.FC = () => {
                     closeCart={handleCloseCart}
                 />
             </main>
-            <footer className="text-white py-12 relative z-10">
-            <hr className="text-white/40" />
-            <div className="container pt-4 mx-auto px-6">
-                <div className="grid md:grid-cols-4 gap-8">
-                    <div className="col-span-2">
-                        <div className="flex flex-col mb-10">
-                            {/* Icon and Text */}
-                            <div className="flex items-center">
-                                <div className="h-14 w-14 mr-2 flex items-center justify-center rounded-full bg-gradient-to-r from-[#5b32ffc9] to-[#5833ffcb]">
-                                    <Utensils className="h-8 w-8 text-white" />
-                                </div>
+            <footer className="text-white py-12 relative z-[5]">
+                <hr className="text-white/40" />
+                <div className="container pt-4 mx-auto px-6">
+                    <div className="grid md:grid-cols-4 gap-8">
+                        <div className="col-span-2">
+                            <div className="flex flex-col mb-10">
+                                {/* Icon and Text */}
+                                <div className="flex items-center">
+                                    <div className="h-14 w-14 mr-2 flex items-center justify-center rounded-full bg-gradient-to-r from-[#5b32ffc9] to-[#5833ffcb]">
+                                        <Utensils className="h-8 w-8 text-white" />
+                                    </div>
 
-                                <div className="flex flex-col items-start">
-                                    {/* Text */}
-                                    <p
-                                        className="text-5xl text-gray-300 tracking-wider"
-                                        style={{ fontFamily: 'JapaneseStyle' }}
-                                    >
-                                        Mealify
-                                    </p>
+                                    <div className="flex flex-col items-start">
+                                        {/* Text */}
+                                        <p
+                                            className="text-5xl text-gray-300 tracking-wider"
+                                            style={{ fontFamily: 'JapaneseStyle' }}
+                                        >
+                                            Mealify
+                                        </p>
 
-                                    {/* Line only as wide as text */}
-                                    <div className="mt-2 h-1 w-full bg-white/40 rounded-full" />
+                                        {/* Line only as wide as text */}
+                                        <div className="mt-2 h-1 w-full bg-white/40 rounded-full" />
+                                    </div>
                                 </div>
                             </div>
+                            <p className="text-gray-300 mb-4 leading-relaxed">
+                                Delivering exceptional culinary experiences right to your doorstep.
+                                Every meal is crafted with passion, using the freshest ingredients, time-tested recipes, and expert preparation techniques.
+                                From our kitchen to your table, enjoy bold flavors, unmatched quality, and the comfort of restaurant-style dining in your own home.
+                            </p>
                         </div>
-                        <p className="text-gray-300 mb-4 leading-relaxed">
-                            Delivering exceptional culinary experiences right to your doorstep.
-                            Fresh ingredients, expert preparation, and unmatched flavor in every bite.
+
+                        <div>
+                            <h3 className="text-xl text-[#5833ffcb] font-semibold mb-4">Quick Links</h3>
+                            <div className="space-y-2">
+                                <Link to="/" className="block text-lg text-gray-300 hover:text-indigo-500 transition-colors duration-300">Home</Link>
+                                <Link to="/order" className="block text-lg text-gray-300 hover:text-indigo-500 transition-colors duration-300">Menu</Link>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 className="text-xl text-[#5833ffcb] font-semibold mb-4">Hours</h3>
+                            <div className="text-lg space-y-4 text-gray-300">
+                                <p>
+                                    Monday - Friday:<br />
+                                    9AM - 11PM
+                                </p>
+                                <p>
+                                    Saturday - Sunday:<br />
+                                    10AM - 12AM
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+                        <p className="text-gray-300">
+                            © 2025 Mealify. All rights reserved. Made with ❤️ for food lovers.
                         </p>
                     </div>
-
-                    <div>
-                        <h3 className="text-xl text-[#5833ffcb] font-semibold mb-4">Quick Links</h3>
-                        <div className="space-y-2">
-                            <Link to="/" className="block text-gray-300 hover:text-white transition-colors">Home</Link>
-                            <Link to="/order" className="block text-gray-300 hover:text-white transition-colors">Menu</Link>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 className="text-xl text-[#5833ffcb] font-semibold mb-4">Hours</h3>
-                        <div className="space-y-4 text-gray-300">
-                            <p>
-                                Monday - Friday:<br />
-                                9AM - 11PM
-                            </p>
-                            <p>
-                                Saturday - Sunday:<br />
-                                10AM - 12AM
-                            </p>
-                        </div>
-                    </div>
                 </div>
-
-                <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-                    <p className="text-gray-300">
-                        © 2025 Mealify. All rights reserved. Made with ❤️ for food lovers.
-                    </p>
-                </div>
-            </div>
-        </footer>
+            </footer>
         </div>
     );
 };

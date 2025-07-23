@@ -29,25 +29,26 @@ const Footer: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <p className="text-gray-300 mb-4 leading-relaxed">
+                        <p className="font-semibold tracking-wide text-gray-300 mb-4 leading-relaxed">
                             Delivering exceptional culinary experiences right to your doorstep.
-                            Fresh ingredients, expert preparation, and unmatched flavor in every bite.
+                            Every meal is crafted with passion, using the freshest ingredients, time-tested recipes, and expert preparation techniques.
+                            From our kitchen to your table, enjoy bold flavors, unmatched quality, and the comfort of restaurant-style dining in your own home.
                         </p>
                     </div>
 
                     <div>
                         <h3 className="text-xl text-[#5833ffcb] font-semibold mb-4">Quick Links</h3>
                         <div className="space-y-2">
-                            <Link to="/" className="block text-gray-300 hover:text-white transition-colors">Home</Link>
-                            <Link to="/order" className="block text-gray-300 hover:text-white transition-colors">Menu</Link>
-                            <a href="#about" className="block text-gray-300 hover:text-white transition-colors">About</a>
-                            <a href="#contact" className="block text-gray-300 hover:text-white transition-colors">Contact</a>
+                            <Link to="/" className="block text-lg text-gray-300 hover:text-indigo-500 transition-colors duration-300">Home</Link>
+                            <Link to="/order" className="block text-lg text-gray-300 hover:text-indigo-500 transition-colors duration-300">Menu</Link>
+                            <a href="#about" className="block text-lg text-gray-300 hover:text-indigo-500 transition-colors duration-300">About</a>
+                            <a href="#contact" className="block text-lg text-gray-300 hover:text-indigo-500 transition-colors duration-300">Contact</a>
                         </div>
                     </div>
 
                     <div>
                         <h3 className="text-xl text-[#5833ffcb] font-semibold mb-4">Hours</h3>
-                        <div className="space-y-4 text-gray-300">
+                        <div className="text-lg space-y-4 text-gray-300">
                             <p>
                                 Monday - Friday:<br />
                                 9AM - 11PM

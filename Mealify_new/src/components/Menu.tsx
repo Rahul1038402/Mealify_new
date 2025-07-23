@@ -149,7 +149,7 @@ const Menu: React.FC<MenuProps> = ({ addToCart, cart }) => {
   return (
     <section id="menu" className="py-20">
       {/* Back Button */}
-      <div className="fixed top-6 sm:top-6 left-6 z-50">
+      <div className="fixed top-6 sm:top-6 left-6">
         <button
 
           className="bg-gradient-to-r from-[#5b32ffc9] to-[#5833ffcb] text-white p-4 rounded-full shadow-lg hover:scale-105 transition-all duration-300 ease-out hover:shadow-xl active:scale-95"
