@@ -7,6 +7,7 @@ export interface MenuItem {
   category: string;
   rating: number;
   prepTime: string;
+  isVeg: boolean;
 }
 
 export interface CartItem extends MenuItem {

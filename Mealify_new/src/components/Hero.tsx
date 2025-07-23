@@ -11,6 +11,9 @@ import img4 from '../assets/marquee_images/img4.jpg';
 import img5 from '../assets/marquee_images/img5.jpg';
 import img6 from '../assets/marquee_images/img6.jpg';
 import img7 from '../assets/marquee_images/img7.jpg';
+import img8 from '../assets/marquee_images/img8.jpg';
+import img9 from '../assets/marquee_images/img9.jpg';
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     const rotatingRef = useRef<HTMLSpanElement>(null);
@@ -50,6 +53,14 @@ const Hero = () => {
         {
             src: img7,
             alt: "Mealify Food Image 7"
+        },
+        {
+            src: img8,
+            alt: "Mealify Food Image 8"
+        },
+        {
+            src: img9,
+            alt: "Mealify Food Image 9"
         }
     ];
 
@@ -114,10 +125,14 @@ const Hero = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button className="bg-[#5833ffc7] hover:bg-[#5b32ffe5] text-white text-lg font-semibold px-6 py-3 rounded-full transition-colors duration-400">
+                                <Link to="/order" className="flex items-center gap-2">
                                 Order Now
+                                </Link>
                             </button>
                             <button className="bg-[#ffffffa9] hover:bg-[#ffffffc4] text-gray-900 border text-lg font-medium px-6 py-3 rounded-full transition-colors duration-400">
+                                <Link to="/order" className="flex items-center gap-2">
                                 Browse Menu
+                                </Link>
                             </button>
                         </div>
                     </div>

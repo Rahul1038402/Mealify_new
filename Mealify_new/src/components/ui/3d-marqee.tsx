@@ -20,7 +20,7 @@ export interface ThreeDMarqueeProps {
 export const ThreeDMarquee: React.FC<ThreeDMarqueeProps> = ({
   images,
   className = "",
-  cols = 4,
+  cols = 2,
   onImageClick,
 }) => {
   // Clone the image list twice
@@ -41,7 +41,7 @@ export const ThreeDMarquee: React.FC<ThreeDMarqueeProps> = ({
 
   return (
     <section
-      className={`mx-auto block h-[525px] max-sm:h-[400px] 
+      className={`mx-auto block h-[525px] w-[500px] max-sm:h-[400px] 
         overflow-hidden rounded-2xl ${className}`}
     >
       <div
@@ -67,7 +67,7 @@ export const ThreeDMarquee: React.FC<ThreeDMarqueeProps> = ({
                 }}
                 className="flex flex-col items-center gap-6 relative"
               >
-                <div className="absolute left-0 top-0 h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
+                <div className="absolute left-0 top-0 h-full w-0.5" />
                 {imagesInGroup.map((image, imgIdx) => {
                   const globalIndex = idx * groupSize + imgIdx;
                   const isClickable = image.href || onImageClick;
